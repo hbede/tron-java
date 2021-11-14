@@ -3,9 +3,10 @@ import java.awt.*;
 public class Bike {
     private Color color;
     private int width;
-    int grid;
+    private int grid;
     private int[] x;
     private int[] y;
+    private int length = 1;
 
     public Bike(Color c, int w, int g, int s1, int s2) {
         color = c;
@@ -18,11 +19,10 @@ public class Bike {
     }
 
     public void move(Direction dir) {
-        for (int i = 10000; i > 0; i--) {
+        for (int i = length++; i > 0; i--) {
             x[i] = x[i - 1];
             y[i] = y[i - 1];
         }
-
         switch (dir) {
             case UP -> y[0] = y[0] - width;
             case DOWN -> y[0] = y[0] + width;
@@ -32,7 +32,7 @@ public class Bike {
     }
 
     public void drawBike(Graphics g) {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < length; i++) {
             if (i == 0) {
                 g.setColor(color);
                 g.fillRect(x[i], y[i], width, width);
@@ -44,4 +44,17 @@ public class Bike {
             // ekkor még csak a fej jelenik meg, meg kell hívni az action performeddel
         }
     }
+
+    public int getBikeLength() {
+        return length;
+    }
+
+    public int getBikePosX(int i) {
+        return x[i];
+    }
+
+    public int getBikePosY(int i) {
+        return y[i];
+    }
+
 }
