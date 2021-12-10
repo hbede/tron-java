@@ -1,10 +1,13 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamePanel extends JPanel implements ActionListener {
     private static int RES_X = 1500;
@@ -19,13 +22,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private Controls controls = new Controls();
     boolean p1Lost = false;
     boolean p2Lost = false;
-
-    private enum STATE{
-        MENU,
-        GAME
-    };
-
-    private STATE State = STATE.MENU;
+    private boolean hostMode = false;
+    private boolean clientMode = false;
 
     Action upAction1;
     Action downAction1;
@@ -80,14 +78,34 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void start() {
+        hostMode = false;
+        clientMode = false;
         isRunning = true;
+        init();
+        timer.start();
+    }
+
+    public void init() {
         grid = new Grid(RES_X, RES_Y, UNIT_SIZE, GAME_UNITS);
         timer = new Timer(DELAY, this);
         direction1 = Direction.RIGHT;
         direction2 = Direction.LEFT;
+    }
+
+    public void hostStart() {
+        hostMode = true;
+        clientMode = false;
+        isRunning = true;
+        init();
         timer.start();
-        //controls.setP1Keys(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_A);
-        //controls.setP2Keys(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_LEFT);
+    }
+
+    public void clientStart() {
+        clientMode = true;
+        hostMode = false;
+        isRunning = true;
+        init();
+        timer.start();
     }
 
     public void paintComponent(Graphics g) {
@@ -115,38 +133,45 @@ public class GamePanel extends JPanel implements ActionListener {
             FontMetrics metrics2 = getFontMetrics(g.getFont());
             g.drawString("DRAW", (RES_X - metrics2.stringWidth("DRAW")) / 2, RES_Y / 2);
         }
-        if(p1Lost || p2Lost) end();
-
     }
 
     public void end() {
-        Timer timer2 = new Timer(3000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                //start();
-            }
+        Timer timer2 = new Timer(2000, arg0 -> {
+            notifyEndgame();
+            System.out.println("Stopped Running");
         });
         timer2.setRepeats(false); // Only execute once
-        timer2.start(); // Go go go!
+        timer2.start();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (isRunning) {
+            if(hostMode && !clientMode) {
+                // direction2 = getDirFromClient();
+            }
+            if(!hostMode && clientMode) {
+                // direction1 = getDirFromHost();
+            }
             grid.moveBikes(direction1, direction2);
             p1Lost = grid.checkCollision(grid.getBike1(), grid.getBike2());
             p2Lost = grid.checkCollision(grid.getBike2(), grid.getBike1());
             isRunning = !p1Lost && !p2Lost;
+            System.out.println("Running");
         }
-        if (!isRunning) timer.stop();
+        if (!isRunning) {
+            timer.stop();
+            end();
+        }
         repaint();
     }
 
+    // controls
     public class UpAction1 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction1 != Direction.DOWN)
+            if (direction1 != Direction.DOWN && !clientMode)
                 direction1 = Direction.UP;
         }
     }
@@ -155,7 +180,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction1 != Direction.UP)
+            if (direction1 != Direction.UP && !clientMode)
                 direction1 = Direction.DOWN;
         }
     }
@@ -164,7 +189,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction1 != Direction.LEFT) {
+            if (direction1 != Direction.LEFT && !clientMode) {
                 direction1 = Direction.RIGHT;
             }
         }
@@ -174,8 +199,9 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction1 != Direction.RIGHT)
+            if (direction1 != Direction.RIGHT && !clientMode)
                 direction1 = Direction.LEFT;
+                // sendDirToClient(direction1);
         }
     }
 
@@ -183,7 +209,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction2 != Direction.DOWN)
+            if (direction2 != Direction.DOWN && !hostMode)
                 direction2 = Direction.UP;
         }
     }
@@ -192,7 +218,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction2 != Direction.UP)
+            if (direction2 != Direction.UP && !hostMode)
                 direction2 = Direction.DOWN;
         }
     }
@@ -201,7 +227,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction2 != Direction.LEFT)
+            if (direction2 != Direction.LEFT && !hostMode)
                 direction2 = Direction.RIGHT;
         }
     }
@@ -210,9 +236,22 @@ public class GamePanel extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (direction2 != Direction.RIGHT)
+            if (direction2 != Direction.RIGHT && !hostMode)
                 direction2 = Direction.LEFT;
         }
+    }
+    private List<EndgameListener> listeners = new ArrayList<>();
+
+    public void addListener(EndgameListener toAdd) {
+        listeners.add(toAdd);
+    }
+
+    public void notifyEndgame() {
+        System.out.println("notifyEndgame() called");
+
+        // Notify everybody that may be interested.
+        for (EndgameListener hl : listeners)
+            hl.someGameEnded();
     }
 
 }

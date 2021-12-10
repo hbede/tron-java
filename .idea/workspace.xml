@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Before Key Binding change">
-      <change afterPath="$PROJECT_DIR$/src/MultiPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SettingsPanel.java" afterDir="false" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Key Binding OK">
+      <change afterPath="$PROJECT_DIR$/src/EndgameListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FramePanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultiPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultiPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SettingsPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/UDPConnectionNHZ" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
@@ -86,7 +88,8 @@
       <workItem from="1637788720740" duration="803000" />
       <workItem from="1638277201571" duration="174000" />
       <workItem from="1638430809834" duration="2731000" />
-      <workItem from="1639132857305" duration="6462000" />
+      <workItem from="1639132857305" duration="7243000" />
+      <workItem from="1639140663406" duration="12563000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -109,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639134058241</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Key Binding OK">
+      <created>1639139792683</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639139792683</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +141,7 @@
     <MESSAGE value="Two snakes, but no collision." />
     <MESSAGE value="Functional 1v1" />
     <MESSAGE value="Before Key Binding change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Before Key Binding change" />
+    <MESSAGE value="Key Binding OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="Key Binding OK" />
   </component>
 </project>
