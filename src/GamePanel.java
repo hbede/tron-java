@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.time.LocalDateTime;
 
 public class GamePanel extends JPanel implements ActionListener {
     private static int RES_X = 1500;
@@ -11,7 +12,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private static int UNIT_SIZE = 10;
     private static int DELAY = 50;
     static final int GAME_UNITS = (RES_X * RES_Y) / UNIT_SIZE;
-    private boolean isRunning = false;
+    boolean isRunning = false;
     private Grid grid;
     private Timer timer;
     private Direction direction1 = Direction.RIGHT, direction2 = Direction.LEFT;
@@ -19,20 +20,74 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean p1Lost = false;
     boolean p2Lost = false;
 
+    private enum STATE{
+        MENU,
+        GAME
+    };
+
+    private STATE State = STATE.MENU;
+
+    Action upAction1;
+    Action downAction1;
+    Action rightAction1;
+    Action leftAction1;
+
+    Action upAction2;
+    Action downAction2;
+    Action rightAction2;
+    Action leftAction2;
+
     public GamePanel() {
         setPreferredSize(new Dimension(RES_X, RES_Y));
         setBackground(Color.black);
+
+        upAction1 = new UpAction1();
+        downAction1 = new DownAction1();
+        rightAction1 = new RightAction1();
+        leftAction1 = new LeftAction1();
+
+        upAction2 = new UpAction2();
+        downAction2 = new DownAction2();
+        rightAction2 = new RightAction2();
+        leftAction2 = new LeftAction2();
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('w'), "upAction1");
+        this.getActionMap().put("upAction1", upAction1);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('s'), "downAction1");
+        this.getActionMap().put("downAction1", downAction1);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('d'), "rightAction1");
+        this.getActionMap().put("rightAction1", rightAction1);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke('a'), "leftAction1");
+        this.getActionMap().put("leftAction1", leftAction1);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("UP"), "upAction2");
+        this.getActionMap().put("upAction2", upAction2);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("DOWN"), "downAction2");
+        this.getActionMap().put("downAction2", downAction2);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("RIGHT"), "rightAction2");
+        this.getActionMap().put("rightAction2", rightAction2);
+
+        this.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("LEFT"), "leftAction2");
+        this.getActionMap().put("leftAction2", leftAction2);
+
+
         setFocusable(true);
-        addKeyListener(new TronKeyAdapter()); // nem ide kéne! valahogy a gridbe vagy a bikeba superrel
     }
 
     public void start() {
         isRunning = true;
         grid = new Grid(RES_X, RES_Y, UNIT_SIZE, GAME_UNITS);
         timer = new Timer(DELAY, this);
+        direction1 = Direction.RIGHT;
+        direction2 = Direction.LEFT;
         timer.start();
-        controls.setP1Keys(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_A);
-        controls.setP2Keys(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_LEFT);
+        //controls.setP1Keys(KeyEvent.VK_W, KeyEvent.VK_S, KeyEvent.VK_D, KeyEvent.VK_A);
+        //controls.setP2Keys(KeyEvent.VK_UP, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_LEFT);
     }
 
     public void paintComponent(Graphics g) {
@@ -60,11 +115,19 @@ public class GamePanel extends JPanel implements ActionListener {
             FontMetrics metrics2 = getFontMetrics(g.getFont());
             g.drawString("DRAW", (RES_X - metrics2.stringWidth("DRAW")) / 2, RES_Y / 2);
         }
+        if(p1Lost || p2Lost) end();
 
     }
 
     public void end() {
-
+        Timer timer2 = new Timer(3000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                //start();
+            }
+        });
+        timer2.setRepeats(false); // Only execute once
+        timer2.start(); // Go go go!
     }
 
     @Override
@@ -79,29 +142,76 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    class TronKeyAdapter extends KeyAdapter {
+    public class UpAction1 extends AbstractAction {
+
         @Override
-        public void keyPressed(KeyEvent e) {
-            // p1 keys
-            if (e.getKeyCode() == controls.getP1Right() && direction1 != Direction.LEFT) {
-                direction1 = Direction.RIGHT;
-            } else if (e.getKeyCode() == controls.getP1Left() && direction1 != Direction.RIGHT) {
-                direction1 = Direction.LEFT;
-            } else if (e.getKeyCode() == controls.getP1Up() && direction1 != Direction.DOWN) {
+        public void actionPerformed(ActionEvent e) {
+            if (direction1 != Direction.DOWN)
                 direction1 = Direction.UP;
-            } else if (e.getKeyCode() == controls.getP1Down() && direction1 != Direction.UP) {
+        }
+    }
+
+    public class DownAction1 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction1 != Direction.UP)
                 direction1 = Direction.DOWN;
+        }
+    }
+
+    public class RightAction1 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction1 != Direction.LEFT) {
+                direction1 = Direction.RIGHT;
             }
-            // p2 keys
-            if (e.getKeyCode() == controls.getP2Right() && direction2 != Direction.LEFT) {
-                direction2 = Direction.RIGHT;
-            } else if (e.getKeyCode() == controls.getP2Left() && direction2 != Direction.RIGHT) {
-                direction2 = Direction.LEFT;
-            } else if (e.getKeyCode() == controls.getP2Up() && direction2 != Direction.DOWN) {
+        }
+    }
+
+    public class LeftAction1 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction1 != Direction.RIGHT)
+                direction1 = Direction.LEFT;
+        }
+    }
+
+    public class UpAction2 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction2 != Direction.DOWN)
                 direction2 = Direction.UP;
-            } else if (e.getKeyCode() == controls.getP2Down() && direction2 != Direction.UP) {
+        }
+    }
+
+    public class DownAction2 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction2 != Direction.UP)
                 direction2 = Direction.DOWN;
-            }
+        }
+    }
+
+    public class RightAction2 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction2 != Direction.LEFT)
+                direction2 = Direction.RIGHT;
+        }
+    }
+
+    public class LeftAction2 extends AbstractAction {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (direction2 != Direction.RIGHT)
+                direction2 = Direction.LEFT;
         }
     }
 

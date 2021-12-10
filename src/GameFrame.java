@@ -4,20 +4,50 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GameFrame extends JFrame {
+    boolean exit = false;
+
     public GameFrame() {
         super();
         CardLayout card = new CardLayout();
+
         var menuPanel = new MenuPanel();
         var gamePanel = new GamePanel();
+
         JPanel cards = new JPanel(card);
         cards.add(gamePanel, "Game");
         cards.add(menuPanel, "Menu");
-        JButton startButton = new JButton("Start");
-        startButton.setBounds(50, 50, 70, 30);
+
+        JButton startButton = new JButton("Start local game");
         menuPanel.add(startButton);
-        card.show(cards, "Menu");
+
+        JButton multiButton = new JButton("Start multiplayer game");
+        menuPanel.add(multiButton);
+
+        JButton settingsButton = new JButton("Settings");
+        menuPanel.add(settingsButton);
+
         add(cards);
+        card.show(cards, "Menu");
+
         startButton.addActionListener(e -> {
+            try {
+                card.show(cards, "Game");
+                gamePanel.start();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        multiButton.addActionListener(e -> {
+            try {
+                card.show(cards, "Game");
+                gamePanel.start();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        settingsButton.addActionListener(e -> {
             try {
                 card.show(cards, "Game");
                 gamePanel.start();
@@ -32,4 +62,6 @@ public class GameFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
+
+
 }
