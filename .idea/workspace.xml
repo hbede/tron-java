@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Two snakes, but no collision.">
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Functional 1v1">
+      <change afterPath="$PROJECT_DIR$/src/FramePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MenuPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TronGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Diagrams" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -75,7 +76,17 @@
       <workItem from="1636663253093" duration="4035000" />
       <workItem from="1636817245176" duration="5035000" />
       <workItem from="1636845448888" duration="37000" />
-      <workItem from="1636909533731" duration="2747000" />
+      <workItem from="1636909533731" duration="3450000" />
+      <workItem from="1636990315339" duration="2054000" />
+      <workItem from="1637005840011" duration="24000" />
+      <workItem from="1637223423399" duration="417000" />
+      <workItem from="1637225190489" duration="1137000" />
+      <workItem from="1637232288117" duration="2279000" />
+      <workItem from="1637515562761" duration="65000" />
+      <workItem from="1637788720740" duration="803000" />
+      <workItem from="1638277201571" duration="174000" />
+      <workItem from="1638430809834" duration="2731000" />
+      <workItem from="1639132857305" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -84,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636666858406</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Functional 1v1">
+      <created>1636917554698</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636917554698</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +122,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Two snakes, but no collision." />
-    <option name="LAST_COMMIT_MESSAGE" value="Two snakes, but no collision." />
+    <MESSAGE value="Functional 1v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Functional 1v1" />
   </component>
 </project>

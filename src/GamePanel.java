@@ -9,7 +9,7 @@ public class GamePanel extends JPanel implements ActionListener {
     private static int RES_X = 1500;
     private static int RES_Y = 800;
     private static int UNIT_SIZE = 10;
-    private static int DELAY = 25;
+    private static int DELAY = 50;
     static final int GAME_UNITS = (RES_X * RES_Y) / UNIT_SIZE;
     private boolean isRunning = false;
     private Grid grid;
@@ -24,7 +24,6 @@ public class GamePanel extends JPanel implements ActionListener {
         setBackground(Color.black);
         setFocusable(true);
         addKeyListener(new TronKeyAdapter()); // nem ide kéne! valahogy a gridbe vagy a bikeba superrel
-        start();
     }
 
     public void start() {

@@ -1,5 +1,5 @@
 public class TronGame {
     public static void main(String[] args) {
-        new GameFrame();
+        GameFrame g = new GameFrame();
     }
 }
