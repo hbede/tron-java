@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Bike move tests added (1)">
+      <change afterPath="$PROJECT_DIR$/tests/ServerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/BikeGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/BikeGameTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,14 +51,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BikeGameTests">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="tron-java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ServerTest">
     <configuration name="BikeGameTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tron-java" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,13 +91,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tron-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ServerTest" />
         <item itemvalue="JUnit.BikeGameTests" />
         <item itemvalue="JUnit.BikeGameTests.Given_Bike_When_BikeMovesIntoItself_Then_ShouldCollide" />
         <item itemvalue="JUnit.BikeGameTests.Given_BikeNearRightWall_When_BikeMovesAndDirectionToWall_Then_ShouldCollide" />
         <item itemvalue="JUnit.BikeGameTests.Given_BikeNearEachOther_When_BikeMovesAndDirectionToEachOther_Then_ShouldCollide" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
