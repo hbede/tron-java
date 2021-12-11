@@ -7,9 +7,10 @@ public class ClientServer extends Thread {
     String IPaddr;
     int portNum;
     int localPortNum;
-    boolean displayed = false;
-    boolean URP1sent = false;
-    boolean URP2sent = false;
+
+    boolean isWaiting = false;
+    boolean isReady = false;
+    boolean isp1Ready = false;
 
     public ClientServer(String address, int localpNum, int pNum) {
         IPaddr = address;
@@ -31,52 +32,44 @@ public class ClientServer extends Thread {
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        //while (true) {
+
         while(true) {
-            if(!GamePanel.player2ready && !GamePanel.player1ready) displayed = false;
-            //System.out.println("ciklus eleje");
-            String outDir = "NOTHING";
-            //System.out.println("nothing utan");
-            String inDir;
-
-
-//            if (!modeSent) {
-//                outDir = GamePanel.serverMode;
-//                modeSent = true;
-//            }
-
+            String out = "OK";
 
             if(GamePanel.getHostMode())  {
-                outDir = GamePanel.getDirection1().toString();
-                //System.out.println("Direction 1 (will be sent): " + outDir);
+                out = GamePanel.getDirection1().toString();
             }
             if(GamePanel.getClientMode()) {
-                outDir = GamePanel.getDirection2().toString();
-                //System.out.println("Direction 2 (will be sent): " + outDir);
+                out = GamePanel.getDirection2().toString();
+            }
+            // tehát itt lenne 2 if
+
+            if(GamePanel.player1ready && !GamePanel.player2ready) {
+                System.out.println("P1READY AND P2 NOT! READY");
+                isWaiting = true;
+            }
+            if (GamePanel.player2ready && !GamePanel.player1ready) {
+                System.out.println("P2READY AND P1 NOT! READY");
+                isReady = true;
             }
 
-            if (GamePanel.nextPlayer.equals(NextPlayer.URP2) && !URP2sent) {
-                outDir = "URP2";
-                //URP2sent = true;
-
+            if(isWaiting) { // ez akkor kéne igaz legyen, ha az egyes játékos megnyomta az 1es gombot
+                out = "WAITING";
             }
 
-            if (GamePanel.nextPlayer.equals(NextPlayer.URP1) && !URP1sent) {
-                outDir = "URP1";
-                //URP1sent = true;
+            if(isReady) {// ennek meg akkor, ha a kettes lenyomta a 2es gombot
+                out = "READY";
             }
 
-            byte[] buffer = outDir.getBytes();
+            byte[] buffer = out.getBytes();
 
             DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length, ia, portNum);
 
             try {
                 datagramSocket.send(datagramPacket);
-                //System.out.println(outDir);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //System.out.println("nothing utan");
 ////////////////////////////////////////////////////////////////////////
             //receiving data from server
             buffer = new byte[1024];
@@ -84,55 +77,40 @@ public class ClientServer extends Thread {
             DatagramPacket response = new DatagramPacket(buffer, buffer.length);
 
             try {
-                //System.out.println("before Server response");
                 datagramSocket.receive(response);
-                //System.out.println("after Server response");
             } catch (IOException e) {
                 e.printStackTrace();
             }
             String answer = new String(buffer, 0, response.getLength());
-            if(answer.equals("URP1")){
-                System.out.println("Server sent: - " + answer);
-            }
+            System.out.println("Other player sent: - " + answer + " isWaiting: " + isWaiting +  ", isReady: " + isReady);
 
-            if (GamePanel.getHostMode() && !answer.equals("URP2") && !answer.equals("URP1") && !answer.equals("NOTHING")) {
+            if (GamePanel.getHostMode() && !answer.equals("WAITING") && !answer.equals("READY") && !answer.equals("OK")) {
                 GamePanel.setDirection2(Direction.valueOf(answer));
             }
-            if (GamePanel.getClientMode() && !answer.equals("URP2") && !answer.equals("URP1") && !answer.equals("NOTHING")){
+            if (GamePanel.getClientMode()  && !answer.equals("WAITING") && !answer.equals("READY") && !answer.equals("OK")){
                 GamePanel.setDirection1(Direction.valueOf(answer));
             }
-            if (answer.equals("URP2")) {
-                // player 2 mode activated
-//                GamePanel.setClientMode(true);
-//                GamePanel.setHostMode(false);
-//                GameFrame.card.show(GameFrame.cards, "Game");
-                GamePanel.player1ready = true;
-            }
-            if (answer.equals("URP1")) {
-                // player 1 mode activated
-//                GamePanel.setHostMode(true);
-//                GamePanel.setClientMode(false);
-//                GameFrame.card.show(GameFrame.cards, "Game");
-                GamePanel.player2ready = true;
-            }
 
-            if (!displayed && GamePanel.player1ready && GamePanel.player2ready) {
-                System.out.println("P1 ReadyEND? " + GamePanel.player1ready);
-                System.out.println("P2 ReadyEND? " + GamePanel.player2ready);
+            if(answer.equals("WAITING")) isp1Ready = true;
+            if (isReady && isp1Ready) {
+                System.out.println("ISREADY AND ANSWER IS WAITING");
                 GameFrame.card.show(GameFrame.cards, "Game");
-                //System.out.println("Game Panel shown by Server");
-                //GamePanel.hostStart();
-                displayed = true;
-                URP2sent = false;
-                URP1sent = false;
-                GamePanel.nextPlayer = NextPlayer.PNON;
-
+                isReady = false;
+                isWaiting = false;
+                isp1Ready = false;
+                GamePanel.player2ready = false;
+                GamePanel.player1ready = false;
             }
 
-            //ha a whileban van ez a kriterium, az utolso "." uzenetet
-            // mar nem kuldi el es nem all le a szerver
-            //if (answer.equals(".")) break;
-            //System.out.println("ciklus vége");
+            if (isWaiting && answer.equals("READY")) {
+                System.out.println("ISWAITING AND ANSWER IS READY");
+                GameFrame.card.show(GameFrame.cards, "Game");
+                isWaiting = false;
+                isReady = false;
+                GamePanel.player2ready = false;
+                GamePanel.player1ready = false;
+            }
+            // ehhez mit szólsz? még az isWaitingnek és az isReadynek kell értéket adni gombnyomásra
         }
 
     }

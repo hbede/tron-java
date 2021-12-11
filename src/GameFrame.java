@@ -124,7 +124,6 @@ public class GameFrame extends JFrame implements EndgameListener {
         hostButton.addActionListener(e -> {
             try {
                 GamePanel.player1ready = true;
-                GamePanel.nextPlayer = NextPlayer.URP2;
                 gamePanel.hostStart();
                 //card.show(cards, "Game");
             } catch (Exception ex) {
@@ -135,7 +134,6 @@ public class GameFrame extends JFrame implements EndgameListener {
         joinButton.addActionListener(e -> {
             try {
                 GamePanel.player2ready = true;
-                GamePanel.nextPlayer = NextPlayer.URP1;
                 gamePanel.clientStart();
                 //card.show(cards, "Game");
             } catch (Exception ex) {
