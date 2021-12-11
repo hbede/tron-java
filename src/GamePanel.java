@@ -13,8 +13,8 @@ public class GamePanel extends JPanel implements ActionListener {
     private static int RES_X = 600;
     private static int RES_Y = 600;
     private static int UNIT_SIZE = 10;
-    private static int DELAY = 400;
-    static final int GAME_UNITS = (RES_X * RES_Y) / UNIT_SIZE;
+    private static int DELAY = 100;
+    static final int GAME_UNITS = (RES_X * RES_Y) / (UNIT_SIZE*UNIT_SIZE);
     static boolean isRunning = false;
     private static Grid grid;
     private static Timer timer;
@@ -184,20 +184,12 @@ public class GamePanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (isRunning) {
-            if(hostMode && !clientMode) {
-                // direction2 = getDirFromClient();
-            }
-            if(!hostMode && clientMode) {
-                // direction1 = getDirFromHost();
-            }
             grid.moveBikes(direction1, direction2);
             p1Lost = grid.checkCollision(grid.getBike1(), grid.getBike2());
             p2Lost = grid.checkCollision(grid.getBike2(), grid.getBike1());
             isRunning = !p1Lost && !p2Lost;
-            // System.out.println("Running");
         }
         if (!isRunning) {
-            System.out.println("Not Running!");
             timer.stop();
             end();
         }
@@ -239,7 +231,6 @@ public class GamePanel extends JPanel implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if (direction1 != Direction.RIGHT && !clientMode)
                 direction1 = Direction.LEFT;
-                // sendDirToClient(direction1);
         }
     }
 
@@ -291,23 +282,8 @@ public class GamePanel extends JPanel implements ActionListener {
         clientMode = false;
         nextPlayer = NextPlayer.PNON;
         System.out.println("notifyEndgame() called");
-        // Notify everybody that may be interested.
+        // Notify everybody that may be interested
         for (EndgameListener hl : listeners)
             hl.someGameEnded();
     }
-
-//    private List<PlayerReadyListener> listeners2 = new ArrayList<>();
-//
-//    public void addPlayerListener(PlayerReadyListener toAdd) {
-//        listeners2.add(toAdd);
-//    }
-//
-//    public void notifyPlayersReady() {
-//        System.out.println("notifyPlayersReady() called");
-//
-//        // Notify everybody that may be interested.
-//        for (PlayerReadyListener hl : listeners2)
-//            hl.playersReady();
-//    }
-
 }
