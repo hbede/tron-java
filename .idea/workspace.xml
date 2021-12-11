@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="game panel opens synced, but game is not synced" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Test Directory added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/TronGameTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/BikeGameTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -32,6 +35,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -44,7 +51,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main2">
+  <component name="RunManager" selected="JUnit.BikeGameTests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tron-java" />
@@ -73,8 +80,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BikeGameTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="tron-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BikeGameTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BikeGameTests" />
         <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.TronGameTest" />
@@ -112,6 +129,7 @@
       <workItem from="1639172773881" duration="10606000" />
       <workItem from="1639207345238" duration="5631000" />
       <workItem from="1639213419631" duration="920000" />
+      <workItem from="1639215859291" duration="2015000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -162,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639213848867</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Test Directory added">
+      <created>1639215988309</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639215988309</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +214,7 @@
     <MESSAGE value="player12ready + URP12 things" />
     <MESSAGE value="works without syncing" />
     <MESSAGE value="game panel opens synced, but game is not synced" />
-    <option name="LAST_COMMIT_MESSAGE" value="game panel opens synced, but game is not synced" />
+    <MESSAGE value="Test Directory added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test Directory added" />
   </component>
 </project>
