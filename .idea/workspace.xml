@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="works without syncing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
-    </list>
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="game panel opens synced, but game is not synced" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +111,7 @@
       <workItem from="1639170594325" duration="1825000" />
       <workItem from="1639172773881" duration="10606000" />
       <workItem from="1639207345238" duration="5631000" />
-      <workItem from="1639213419631" duration="379000" />
+      <workItem from="1639213419631" duration="920000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -159,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639209176834</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="game panel opens synced, but game is not synced">
+      <created>1639213848867</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639213848867</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +188,7 @@
     <MESSAGE value="Before Server" />
     <MESSAGE value="player12ready + URP12 things" />
     <MESSAGE value="works without syncing" />
-    <option name="LAST_COMMIT_MESSAGE" value="works without syncing" />
+    <MESSAGE value="game panel opens synced, but game is not synced" />
+    <option name="LAST_COMMIT_MESSAGE" value="game panel opens synced, but game is not synced" />
   </component>
 </project>
