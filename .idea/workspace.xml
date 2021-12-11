@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Key Binding OK">
-      <change afterPath="$PROJECT_DIR$/src/EndgameListener.java" afterDir="false" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Before Server">
+      <change afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NextPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PlayerReadyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FramePanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MultiPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultiPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TronGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -42,6 +46,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/UDPConnectionNHZ" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
@@ -50,7 +55,21 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main2">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="tron-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main2" />
+      <module name="tron-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TronGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TronGame" />
       <module name="tron-java" />
@@ -58,8 +77,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TronGameTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TronGameTest" />
+      <module name="tron-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TronGameTest" />
         <item itemvalue="Application.TronGame" />
       </list>
     </recent_temporary>
@@ -89,7 +118,10 @@
       <workItem from="1638277201571" duration="174000" />
       <workItem from="1638430809834" duration="2731000" />
       <workItem from="1639132857305" duration="7243000" />
-      <workItem from="1639140663406" duration="12563000" />
+      <workItem from="1639140663406" duration="21961000" />
+      <workItem from="1639170594325" duration="1825000" />
+      <workItem from="1639172773881" duration="10606000" />
+      <workItem from="1639207345238" duration="1664000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -119,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639139792683</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Before Server">
+      <created>1639157842630</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1639157842630</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +181,7 @@
     <MESSAGE value="Functional 1v1" />
     <MESSAGE value="Before Key Binding change" />
     <MESSAGE value="Key Binding OK" />
-    <option name="LAST_COMMIT_MESSAGE" value="Key Binding OK" />
+    <MESSAGE value="Before Server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Before Server" />
   </component>
 </project>

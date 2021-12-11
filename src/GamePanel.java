@@ -10,20 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GamePanel extends JPanel implements ActionListener {
-    private static int RES_X = 1500;
-    private static int RES_Y = 800;
+    private static int RES_X = 600;
+    private static int RES_Y = 600;
     private static int UNIT_SIZE = 10;
-    private static int DELAY = 50;
+    private static int DELAY = 400;
     static final int GAME_UNITS = (RES_X * RES_Y) / UNIT_SIZE;
-    boolean isRunning = false;
-    private Grid grid;
-    private Timer timer;
-    private Direction direction1 = Direction.RIGHT, direction2 = Direction.LEFT;
+    static boolean isRunning = false;
+    private static Grid grid;
+    private static Timer timer;
+    private static Direction direction1 = Direction.RIGHT, direction2 = Direction.LEFT;
     private Controls controls = new Controls();
     boolean p1Lost = false;
     boolean p2Lost = false;
-    private boolean hostMode = false;
-    private boolean clientMode = false;
+    private static boolean hostMode = false;
+    private static boolean clientMode = false;
+    static String serverMode;
+    static NextPlayer nextPlayer;
+
+    static boolean player1ready = false;
+    static boolean player2ready = false;
 
     Action upAction1;
     Action downAction1;
@@ -75,6 +80,38 @@ public class GamePanel extends JPanel implements ActionListener {
 
 
         setFocusable(true);
+    }
+
+    static Direction getDirection1() {
+        return direction1;
+    }
+
+    static Direction getDirection2() {
+        return direction2;
+    }
+
+    static void setDirection1(Direction d) {
+        direction1 = d;
+    }
+
+    static void setDirection2(Direction d) {
+        direction2 = d;
+    }
+
+    static boolean getHostMode() {
+        return hostMode;
+    }
+
+    static boolean getClientMode() {
+        return clientMode;
+    }
+
+    static void setHostMode(boolean h) {
+        hostMode = h;
+    }
+
+    static void setClientMode(boolean c) {
+        clientMode = c;
     }
 
     public void start() {
@@ -157,9 +194,10 @@ public class GamePanel extends JPanel implements ActionListener {
             p1Lost = grid.checkCollision(grid.getBike1(), grid.getBike2());
             p2Lost = grid.checkCollision(grid.getBike2(), grid.getBike1());
             isRunning = !p1Lost && !p2Lost;
-            System.out.println("Running");
+            // System.out.println("Running");
         }
         if (!isRunning) {
+            System.out.println("Not Running!");
             timer.stop();
             end();
         }
@@ -247,11 +285,29 @@ public class GamePanel extends JPanel implements ActionListener {
     }
 
     public void notifyEndgame() {
+        player1ready = false;
+        player2ready = false;
+        hostMode = false;
+        clientMode = false;
+        nextPlayer = NextPlayer.PNON;
         System.out.println("notifyEndgame() called");
-
         // Notify everybody that may be interested.
         for (EndgameListener hl : listeners)
             hl.someGameEnded();
     }
+
+//    private List<PlayerReadyListener> listeners2 = new ArrayList<>();
+//
+//    public void addPlayerListener(PlayerReadyListener toAdd) {
+//        listeners2.add(toAdd);
+//    }
+//
+//    public void notifyPlayersReady() {
+//        System.out.println("notifyPlayersReady() called");
+//
+//        // Notify everybody that may be interested.
+//        for (PlayerReadyListener hl : listeners2)
+//            hl.playersReady();
+//    }
 
 }
