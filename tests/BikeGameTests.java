@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
+/**
+ * Test class for game mechanics.
+ */
 public class BikeGameTests {
     Bike testBike1;
     Bike testBike2;
