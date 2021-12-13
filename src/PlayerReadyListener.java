@@ -1,3 +1,0 @@
-//interface PlayerReadyListener {
-//    void playersReady();
-//}

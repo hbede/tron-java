@@ -1,34 +1,46 @@
 import java.io.IOException;
 import java.net.*;
-import static java.lang.Integer.parseInt;
 
+/**
+ * A UDP server threaded class to handle communication between two game clients.
+ * It always runs on both player's machine and sends and receives messages.
+ */
 public class ClientServer extends Thread {
 
-    String IPaddr;
-    int portNum;
-    int localPortNum;
+    String IPAddress;
+    int externalPortNumber;
+    int localPortNumber;
 
     boolean isWaiting = false;
     boolean isReady = false;
     boolean isp1Ready = false;
 
+    /**
+     * Constructor for
+     * @param address
+     * @param localpNum
+     * @param pNum
+     */
     public ClientServer(String address, int localpNum, int pNum) {
-        IPaddr = address;
-        portNum = pNum;
-        localPortNum = localpNum;
+        IPAddress = address;
+        externalPortNumber = pNum;
+        localPortNumber = localpNum;
     }
 
+    /**
+     *  This function runs when the thread has started.
+     */
     public void run() {
 
         DatagramSocket datagramSocket = null;
         try {
-            datagramSocket = new DatagramSocket(localPortNum);
+            datagramSocket = new DatagramSocket(localPortNumber);
         } catch (SocketException e) {
             e.printStackTrace();
         }
         InetAddress ia = null;
         try {
-            ia = InetAddress.getByName(IPaddr);
+            ia = InetAddress.getByName(IPAddress);
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -42,7 +54,6 @@ public class ClientServer extends Thread {
             if(GamePanel.getClientMode()) {
                 out = GamePanel.getDirection2().toString();
             }
-            // tehát itt lenne 2 if
 
             if(GamePanel.player1ready && !GamePanel.player2ready) {
                 System.out.println("P1READY AND P2 NOT! READY");
@@ -53,20 +64,22 @@ public class ClientServer extends Thread {
                 isReady = true;
             }
 
-            if(isWaiting) { // ez akkor kéne igaz legyen, ha az egyes játékos megnyomta az 1es gombot
+            if(isWaiting) {
                 out = "WAITING";
             }
 
-            if(isReady) {// ennek meg akkor, ha a kettes lenyomta a 2es gombot
+            if(isReady) {
                 out = "READY";
             }
 
             byte[] buffer = out.getBytes();
 
-            DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length, ia, portNum);
+            DatagramPacket datagramPacket = new DatagramPacket(buffer, buffer.length, ia, externalPortNumber);
 
             try {
-                datagramSocket.send(datagramPacket);
+                if (datagramSocket != null) {
+                    datagramSocket.send(datagramPacket);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -110,7 +123,6 @@ public class ClientServer extends Thread {
                 GamePanel.player2ready = false;
                 GamePanel.player1ready = false;
             }
-            // ehhez mit szólsz? még az isWaitingnek és az isReadynek kell értéket adni gombnyomásra
         }
 
     }

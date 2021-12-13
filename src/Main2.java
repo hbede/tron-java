@@ -1,3 +1,7 @@
+/**
+ * A main class to start the second program.
+ * It works exactly like the class Main.
+ */
 public class Main2 {
     public static void main(String[] args) {
         TronGame tg = new TronGame();
@@ -9,7 +13,7 @@ public class Main2 {
         }
 
         System.out.println("Server Start");
-        ClientServer client = new ClientServer(tg.gg.IP, tg.gg.localPort, tg.gg.clientPort); // felületről kéne beszerezni
+        ClientServer client = new ClientServer(tg.gg.IP, tg.gg.localPort, tg.gg.clientPort);
         client.run();
     }
 }

@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Bike move tests added (1)">
-      <change afterPath="$PROJECT_DIR$/tests/ServerTest.java" afterDir="false" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Bike collision tests added (2)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controls.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Direction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EndgameListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EndgameListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Grid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Helper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MultiPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MultiPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NextPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayerReadyListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SettingsPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SettingsPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TronGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TronGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ServerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,32 +68,26 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ServerTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="tron-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main2" />
+      <module name="tron-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BikeGameTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="tron-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="BikeGameTests" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BikeGameTests.Given_BikeNearEachOther_When_BikeMovesAndDirectionToEachOther_Then_ShouldCollide" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tron-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BikeGameTests" />
-      <option name="METHOD_NAME" value="Given_BikeNearEachOther_When_BikeMovesAndDirectionToEachOther_Then_ShouldCollide" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BikeGameTests.Given_BikeNearRightWall_When_BikeMovesAndDirectionToWall_Then_ShouldCollide" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="tron-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="BikeGameTests" />
-      <option name="METHOD_NAME" value="Given_BikeNearRightWall_When_BikeMovesAndDirectionToWall_Then_ShouldCollide" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -102,11 +113,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ServerTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BikeGameTests" />
+        <item itemvalue="Application.Main2" />
+        <item itemvalue="JUnit.ServerTest" />
         <item itemvalue="JUnit.BikeGameTests.Given_Bike_When_BikeMovesIntoItself_Then_ShouldCollide" />
-        <item itemvalue="JUnit.BikeGameTests.Given_BikeNearRightWall_When_BikeMovesAndDirectionToWall_Then_ShouldCollide" />
-        <item itemvalue="JUnit.BikeGameTests.Given_BikeNearEachOther_When_BikeMovesAndDirectionToEachOther_Then_ShouldCollide" />
       </list>
     </recent_temporary>
   </component>
@@ -141,6 +152,7 @@
       <workItem from="1639207345238" duration="5631000" />
       <workItem from="1639213419631" duration="920000" />
       <workItem from="1639215859291" duration="7118000" />
+      <workItem from="1639408040687" duration="5507000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -234,6 +246,7 @@
     <MESSAGE value="game panel opens synced, but game is not synced" />
     <MESSAGE value="Test Directory added" />
     <MESSAGE value="Bike move tests added (1)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bike move tests added (1)" />
+    <MESSAGE value="Bike collision tests added (2)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bike collision tests added (2)" />
   </component>
 </project>

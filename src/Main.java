@@ -1,3 +1,6 @@
+/**
+ * A main class to start the program.
+ */
 public class Main {
     public static void main(String[] args) {
         TronGame tg = new TronGame();

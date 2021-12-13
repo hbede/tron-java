@@ -1,7 +1,13 @@
+/**
+ * This class initializes a GameFrame Object in a Thread.
+ */
 public class TronGame extends Thread {
     GameFrame gg;
+
+    /**
+     * Runs GameFrame in a Thread.
+     */
     public void run() {
-        GameFrame g = new GameFrame();
-        gg = g;
+        gg = new GameFrame();
     }
 }

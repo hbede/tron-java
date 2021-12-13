@@ -9,23 +9,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A JPanel to handle the game.
+ */
 public class GamePanel extends JPanel implements ActionListener {
-    private static int RES_X = 600;
-    private static int RES_Y = 600;
-    private static int UNIT_SIZE = 10;
-    private static int DELAY = 100;
-    static final int GAME_UNITS = (RES_X * RES_Y) / (UNIT_SIZE*UNIT_SIZE);
+    private static final int RES_X = 600;
+    private static final int RES_Y = 600;
+    private static final int UNIT_SIZE = 10;
+    private static final int DELAY = 200;
+    static final int GAME_UNITS = (RES_X * RES_Y) / (UNIT_SIZE * UNIT_SIZE);
     static boolean isRunning = false;
     private static Grid grid;
     private static Timer timer;
     private static Direction direction1 = Direction.RIGHT, direction2 = Direction.LEFT;
-    private Controls controls = new Controls();
     boolean p1Lost = false;
     boolean p2Lost = false;
     private static boolean hostMode = false;
     private static boolean clientMode = false;
-    static String serverMode;
-    static NextPlayer nextPlayer;
 
     static boolean player1ready = false;
     static boolean player2ready = false;
@@ -40,6 +40,10 @@ public class GamePanel extends JPanel implements ActionListener {
     Action rightAction2;
     Action leftAction2;
 
+    /**
+     * Constructor for the game panel.
+     * It contains mostly control binding setups.
+     */
     public GamePanel() {
         setPreferredSize(new Dimension(RES_X, RES_Y));
         setBackground(Color.black);
@@ -82,38 +86,61 @@ public class GamePanel extends JPanel implements ActionListener {
         setFocusable(true);
     }
 
+    /**
+     * Returns direction.
+     * Used to tell the first bike where to move.
+     * @return direction
+     */
     static Direction getDirection1() {
         return direction1;
     }
 
+    /**
+     * Returns direction.
+     * Used to tell the second bike where to move.
+     * @return direction
+     */
     static Direction getDirection2() {
         return direction2;
     }
 
+    /**
+     * Sets direction.
+     * Used to tell the first bike where to move.
+     * @param d direction, where te bike should move
+     */
     static void setDirection1(Direction d) {
         direction1 = d;
     }
 
+    /**
+     * Sets direction.
+     * Used to tell the second bike where to move.
+     * @param d direction, where te bike should move
+     */
     static void setDirection2(Direction d) {
         direction2 = d;
     }
 
+    /**
+     * Returns actual hostMode setting of GamePanel.
+     * @return true, if the game is in host mode
+     */
     static boolean getHostMode() {
         return hostMode;
     }
 
+    /**
+     * Returns actual clientMode setting of GamePanel.
+     * @return true, if the game is in client mode
+     */
     static boolean getClientMode() {
         return clientMode;
     }
 
-    static void setHostMode(boolean h) {
-        hostMode = h;
-    }
-
-    static void setClientMode(boolean c) {
-        clientMode = c;
-    }
-
+    /**
+     * Called when the game is started in local mode.
+     */
     public void start() {
         hostMode = false;
         clientMode = false;
@@ -122,6 +149,9 @@ public class GamePanel extends JPanel implements ActionListener {
         timer.start();
     }
 
+    /**
+     * Used to initialize a few variables when the game starts.
+     */
     public void init() {
         grid = new Grid(RES_X, RES_Y, UNIT_SIZE, GAME_UNITS);
         timer = new Timer(DELAY, this);
@@ -129,6 +159,9 @@ public class GamePanel extends JPanel implements ActionListener {
         direction2 = Direction.LEFT;
     }
 
+    /**
+     * Called when the game is started in host mode.
+     */
     public void hostStart() {
         hostMode = true;
         clientMode = false;
@@ -137,6 +170,9 @@ public class GamePanel extends JPanel implements ActionListener {
         timer.start();
     }
 
+    /**
+     * Called when the game is started in client mode.
+     */
     public void clientStart() {
         clientMode = true;
         hostMode = false;
@@ -145,11 +181,19 @@ public class GamePanel extends JPanel implements ActionListener {
         timer.start();
     }
 
+    /**
+     * Used to draw AWT Graphics.
+     * @param g a Graphics object to draw with
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
     }
 
+    /**
+     * Used to draw the grid and the endgame texts.
+     * @param g a Graphics object to draw with
+     */
     public void draw(Graphics g) {
         grid.drawGrid(g);
         if (p1Lost && !p2Lost) {
@@ -172,8 +216,12 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
+    /**
+     * Called when the game has ended.
+     * It uses a timer to delay jumping back to the menu.
+     */
     public void end() {
-        Timer timer2 = new Timer(2000, arg0 -> {
+        Timer timer2 = new Timer(3000, arg0 -> {
             notifyEndgame();
             System.out.println("Stopped Running");
         });
@@ -181,6 +229,13 @@ public class GamePanel extends JPanel implements ActionListener {
         timer2.start();
     }
 
+    /**
+     * Overridden function of ActionListener, it is performed when the timer ticks.
+     * If the game is running, moves the bikes and checks collision.
+     * If the game is not running, stops the timer and calls the end() function.
+     * Repaints the GUI in every tick.
+     * @param e event
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (isRunning) {
@@ -196,8 +251,10 @@ public class GamePanel extends JPanel implements ActionListener {
         repaint();
     }
 
-    // controls
-    public class UpAction1 extends AbstractAction {
+    /**
+     * Inner class to handle up action of player 1.
+     */
+    public static class UpAction1 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -206,7 +263,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class DownAction1 extends AbstractAction {
+    /**
+     * Inner class to handle down action of player 1.
+     */
+    public static class DownAction1 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -215,7 +275,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class RightAction1 extends AbstractAction {
+    /**
+     * Inner class to handle right action of player 1.
+     */
+    public static class RightAction1 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -225,7 +288,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class LeftAction1 extends AbstractAction {
+    /**
+     * Inner class to handle left action of player 1.
+     */
+    public static class LeftAction1 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -234,7 +300,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class UpAction2 extends AbstractAction {
+    /**
+     * Inner class to handle up action of player 2.
+     */
+    public static class UpAction2 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -243,7 +312,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class DownAction2 extends AbstractAction {
+    /**
+     * Inner class to handle down action of player 2.
+     */
+    public static class DownAction2 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -252,7 +324,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class RightAction2 extends AbstractAction {
+    /**
+     * Inner class to handle right action of player 2.
+     */
+    public static class RightAction2 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -261,7 +336,10 @@ public class GamePanel extends JPanel implements ActionListener {
         }
     }
 
-    public class LeftAction2 extends AbstractAction {
+    /**
+     * Inner class to handle left action of player 2.
+     */
+    public static class LeftAction2 extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -269,18 +347,21 @@ public class GamePanel extends JPanel implements ActionListener {
                 direction2 = Direction.LEFT;
         }
     }
-    private List<EndgameListener> listeners = new ArrayList<>();
+
+    private final List<EndgameListener> listeners = new ArrayList<>();
 
     public void addListener(EndgameListener toAdd) {
         listeners.add(toAdd);
     }
 
+    /**
+     * Executed when a "game ended" event happens.
+     */
     public void notifyEndgame() {
         player1ready = false;
         player2ready = false;
         hostMode = false;
         clientMode = false;
-        nextPlayer = NextPlayer.PNON;
         System.out.println("notifyEndgame() called");
         // Notify everybody that may be interested
         for (EndgameListener hl : listeners)

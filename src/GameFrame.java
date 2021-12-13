@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * This JFrame class contains all GUI elements.
+ * It uses a card layout to handle the Menu System.
+ */
 public class GameFrame extends JFrame implements EndgameListener {
     boolean dataRcv = false;
-    boolean exit = false;
     GamePanel gamePanel;
     MenuPanel menuPanel;
     MultiPanel multiPanel;
@@ -18,6 +19,11 @@ public class GameFrame extends JFrame implements EndgameListener {
     int localPort;
     int clientPort;
 
+    /**
+     * Constructor of class GameFrame.
+     * It adds Swing elements to the GUI.
+     * Also adds listeners to the buttons and text boxes.
+     */
     public GameFrame() {
         super();
 
@@ -30,7 +36,6 @@ public class GameFrame extends JFrame implements EndgameListener {
         chooseNumberPanel = new JPanel();
         settingsPanel = new SettingsPanel();
         gamePanel.addListener(this);
-        // gamePanel.addPlayerListener(this);
 
         cards = new JPanel(card);
         cards.add(gamePanel, "Game");
@@ -40,13 +45,15 @@ public class GameFrame extends JFrame implements EndgameListener {
         cards.add(settingsPanel, "Settings");
 
         var startButton = new JButton("Start local game");
+        startButton.setPreferredSize(new Dimension(170, 100));
         menuPanel.add(startButton);
 
         var multiButton = new JButton("Start multiplayer game");
+        multiButton.setPreferredSize(new Dimension(170, 100));
         menuPanel.add(multiButton);
 
         var settingsButton = new JButton("Settings");
-        menuPanel.add(settingsButton);
+        //menuPanel.add(settingsButton);
 
         var hostButton = new JButton("Player 1");
         chooseNumberPanel.add(hostButton);
@@ -113,7 +120,6 @@ public class GameFrame extends JFrame implements EndgameListener {
                 clientPort = Integer.parseInt(joinPortText.getText());
                 localPort = Integer.parseInt(hostPortText.getText());
                 dataRcv = true;
-                GamePanel.nextPlayer = NextPlayer.PNON;
                 card.show(cards, "Numbers");
 
             } catch (Exception ex) {
@@ -149,18 +155,12 @@ public class GameFrame extends JFrame implements EndgameListener {
         setLocationRelativeTo(null);
     }
 
+    /**
+     * Overridden function of EndgameListener.
+     * Shows the Menu Panel using CardLayout.
+     */
     @Override
     public void someGameEnded() {
         card.show(cards, "Menu");
     }
-
-//    @Override
-//    public void playersReady() {
-//        if (GamePanel.getHostMode()) {
-//            gamePanel.clientStart();
-//        } else if (GamePanel.getClientMode()) {
-//            gamePanel.hostStart();
-//        } else gamePanel.start();
-//        card.show(cards, "Game");
-//    }
 }
