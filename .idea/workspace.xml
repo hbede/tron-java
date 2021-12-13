@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="tron-java:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Refined and added javadoc except for UDP server.">
-      <change afterPath="$PROJECT_DIR$/src/OtherPlayerReadyListener.java" afterDir="false" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Multiplayer is synced now.">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/tron_java_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +48,13 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/UDPConnectionNHZ" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
@@ -54,7 +62,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main2">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tron-java" />
@@ -99,8 +107,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main2" />
         <item itemvalue="JUnit.BikeGameTests" />
         <item itemvalue="JUnit.ServerTest" />
         <item itemvalue="JUnit.BikeGameTests.Given_Bike_When_BikeMovesIntoItself_Then_ShouldCollide" />
@@ -139,6 +147,7 @@
       <workItem from="1639213419631" duration="920000" />
       <workItem from="1639215859291" duration="7118000" />
       <workItem from="1639408040687" duration="5819000" />
+      <workItem from="1639422244357" duration="1289000" />
     </task>
     <task id="LOCAL-00001" summary="Two snakes, but no collision.">
       <created>1636666858406</created>
@@ -210,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639413809373</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Multiplayer is synced now.">
+      <created>1639422090109</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1639422090109</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +257,7 @@
     <MESSAGE value="Bike move tests added (1)" />
     <MESSAGE value="Bike collision tests added (2)" />
     <MESSAGE value="Refined and added javadoc except for UDP server." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined and added javadoc except for UDP server." />
+    <MESSAGE value="Multiplayer is synced now." />
+    <option name="LAST_COMMIT_MESSAGE" value="Multiplayer is synced now." />
   </component>
 </project>
