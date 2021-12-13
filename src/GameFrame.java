@@ -5,7 +5,7 @@ import java.awt.*;
  * This JFrame class contains all GUI elements.
  * It uses a card layout to handle the Menu System.
  */
-public class GameFrame extends JFrame implements EndgameListener {
+public class GameFrame extends JFrame implements EndgameListener, OtherPlayerReadyListener {
     boolean dataRcv = false;
     GamePanel gamePanel;
     MenuPanel menuPanel;
@@ -130,7 +130,7 @@ public class GameFrame extends JFrame implements EndgameListener {
         hostButton.addActionListener(e -> {
             try {
                 GamePanel.player1ready = true;
-                gamePanel.hostStart();
+                //gamePanel.hostStart();
                 //card.show(cards, "Game");
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -162,5 +162,10 @@ public class GameFrame extends JFrame implements EndgameListener {
     @Override
     public void someGameEnded() {
         card.show(cards, "Menu");
+    }
+
+    @Override
+    public void otherPlayerReady() {
+        gamePanel.hostStart();
     }
 }

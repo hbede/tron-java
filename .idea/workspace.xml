@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="ServerTest added">
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Refined and added javadoc except for UDP server.">
+      <change afterPath="$PROJECT_DIR$/src/OtherPlayerReadyListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -239,7 +241,6 @@
     <MESSAGE value="Bike move tests added (1)" />
     <MESSAGE value="Bike collision tests added (2)" />
     <MESSAGE value="Refined and added javadoc except for UDP server." />
-    <MESSAGE value="ServerTest added" />
-    <option name="LAST_COMMIT_MESSAGE" value="ServerTest added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refined and added javadoc except for UDP server." />
   </component>
 </project>

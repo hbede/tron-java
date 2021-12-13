@@ -13,6 +13,7 @@ public class Main {
 
         System.out.println("Server Start" + tg.gg.IP + tg.gg.localPort + tg.gg.clientPort);
         ClientServer client = new ClientServer(tg.gg.IP, tg.gg.localPort, tg.gg.clientPort); // felületről kéne beszerezni
+        client.addListener(tg.gg);
         client.run();
     }
 }

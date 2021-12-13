@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A UDP server threaded class to handle communication between two game clients.
@@ -136,6 +138,7 @@ public class ClientServer extends Thread{
 
             if (isWaiting && answer.equals("READY")) {
                 System.out.println("ISWAITING AND ANSWER IS READY");
+                notifyOtherPlayerReady();
                 GameFrame.card.show(GameFrame.cards, "Game");
                 isWaiting = false;
                 isReady = false;
@@ -143,5 +146,26 @@ public class ClientServer extends Thread{
                 GamePanel.player1ready = false;
             }
         }
+    }
+
+    private final List<OtherPlayerReadyListener> listeners = new ArrayList<>();
+
+    public void addListener(OtherPlayerReadyListener toAdd) {
+        listeners.add(toAdd);
+    }
+
+    /**
+
+     * Executed when a "game ended" event happens.
+
+     */
+
+    public void notifyOtherPlayerReady() {
+
+        System.out.println("notifyOtherPlayerReady called");
+
+        // Notify everybody that may be interested
+
+        for (OtherPlayerReadyListener hl : listeners) hl.otherPlayerReady();
     }
 }
