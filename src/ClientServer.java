@@ -5,7 +5,7 @@ import java.net.*;
  * A UDP server threaded class to handle communication between two game clients.
  * It always runs on both player's machine and sends and receives messages.
  */
-public class ClientServer extends Thread {
+public class ClientServer extends Thread{
 
     String IPAddress;
     int externalPortNumber;
@@ -17,9 +17,9 @@ public class ClientServer extends Thread {
 
     /**
      * Constructor for
-     * @param address
-     * @param localpNum
-     * @param pNum
+     * @param address the IP address of the other player.
+     * @param localpNum the local port.
+     * @param pNum the port of the other player.
      */
     public ClientServer(String address, int localpNum, int pNum) {
         IPAddress = address;
@@ -29,6 +29,25 @@ public class ClientServer extends Thread {
 
     /**
      *  This function runs when the thread has started.
+     *  It sends data to the other player and listens
+     *  if there is incoming data in an endless cycle.
+     *  The server sends strings converted to bytes.
+     *  If the player is host (or p1), the server will
+     *  send the directions it gets from the getDirection1() method.
+     *  If the player is client (or p2), the server will
+     *  send the directions it gets from the getDirection2() method.
+     *  If the player is p1, and they are ready, the server sends
+     *  the word WAITING, to notify the other player, that they are ready.
+     *  The server of the other server notes this.
+     *  If the player is p2, and they are ready, the server sends
+     *  the word READY, to notify the other player, that they are ready.
+     *  The server of the other server notes this.
+     *  If both players are ready, the game starts
+     *  and all flags that are used to get to know
+     *  if the other player is ready are set back to default,
+     *  so the players will be able to play again.
+     *  The directions that the server gets as answers are used to set
+     *  the direction of the opponent.
      */
     public void run() {
 
@@ -124,6 +143,5 @@ public class ClientServer extends Thread {
                 GamePanel.player1ready = false;
             }
         }
-
     }
 }

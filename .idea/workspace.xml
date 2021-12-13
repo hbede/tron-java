@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="Refined and added javadoc except for UDP server.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="530e0917-9aa0-4933-bec0-e76e4db2440a" name="Changes" comment="ServerTest added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ClientServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/ServerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +52,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="tron-java" />
@@ -95,9 +97,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main2" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.BikeGameTests" />
-        <item itemvalue="Application.Main2" />
         <item itemvalue="JUnit.ServerTest" />
         <item itemvalue="JUnit.BikeGameTests.Given_Bike_When_BikeMovesIntoItself_Then_ShouldCollide" />
       </list>
@@ -237,6 +239,7 @@
     <MESSAGE value="Bike move tests added (1)" />
     <MESSAGE value="Bike collision tests added (2)" />
     <MESSAGE value="Refined and added javadoc except for UDP server." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refined and added javadoc except for UDP server." />
+    <MESSAGE value="ServerTest added" />
+    <option name="LAST_COMMIT_MESSAGE" value="ServerTest added" />
   </component>
 </project>

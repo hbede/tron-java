@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for testing the server properties.
+ */
 public class ServerTest {
     @Test
     public void testIPaddress(){
